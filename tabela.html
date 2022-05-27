@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 style="text-align: center;">DADOS</h1>
+    <div class="container">
+    <div class="row">
+    <div class="col-xs-12">
+    <table class="table">
+        <thread>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Horário</th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for t in bancofiltro  %}
+                <tr>
+                    <td>{{ t.id }}</td>
+                    <td>{{ t.tipo }}</td>
+                    <td>{{ t.quantidade }}</td>
+                    <td>{{ t.valor }}</td>
+                    <td>{{ t.data }}</td>
+                    <td>{{ t.horario }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

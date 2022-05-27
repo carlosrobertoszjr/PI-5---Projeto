@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PI-5</title>
+        <link rel="stylesheet" href="../static/style.css" type="text/css">
+    </head>
+
+    <body>
+        
+        <h1 id="titulo1">Quantos KG você quer?</h1> <br>
+        <img id="G1" src="https://cdn.pixabay.com/photo/2015/11/13/07/44/seed-1041644_960_720.jpg"><p></p>
+
+        <fieldset id="KG">
+
+        <form action="/add" method="POST">
+
+            <div>
+                <input type="radio" id="KG1" name="quantidade" value="1"
+                       checked>
+                <label for="1KG">1KG</label>
+            </div>
+          
+              <div>
+                <input type="radio" id="KG2" name="quantidade" value="2">
+                <label for="2KG">2KG</label>
+              </div>
+
+              <div>
+                <input type="radio" id="KG3" name="quantidade" value="3">
+                <label for="3KG">3KG</label>
+              </div>
+
+            <div>
+                <input type="hidden" id="Girassol" name="tipo" value="girassol" checked>
+                <label for="Girassol"></label>
+            </div>
+
+            <br>
+
+                <script>
+                    function comprar(){
+                        var sucesso = 1;
+                        //"<input id='Buy' type='submit' value='Comprar' name='comprar' onclick='comprar()>'"
+                        if(sucesso == {{ v }} )
+                        {
+                            alert("Dados gravados com sucesso!");
+                        }else{
+                            alert("Não há estoque suficiente!");
+                        }
+                    }
+                </script>
+
+              <div>
+                <!--<input id="Buy" type="submit" value="Comprar" name="comprar" onclick=comprar()>-->
+                  <button onclick="comprar()" id="Buy">Comprar</button>
+
+
+              </div> <br>
+        </form>
+
+          <div>
+             <a href= "/"><input id="Voltar" type="submit" value="Pagina Inicial"></a>
+          </div>
+
+        </fieldset>
+
+
+
+         <script type="text/javascript" src="../static/script.js"></script>
+
+    </body>
+
+</html>

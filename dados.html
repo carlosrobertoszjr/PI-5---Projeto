@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <title>Table V01</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+
+        <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+        <link rel="stylesheet" type="text/css" href="../static/util.css">
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+
+        <meta name="robots" content="noindex, follow">
+        <script nonce="a2908659-335f-4c3e-a1e0-8b49fc945ad6">(function(w,d){!function(a,e,t,r){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zaraz={deferred:[]},a.zaraz.q=[],a.zaraz._f=function(e){return function(){var t=Array.prototype.slice.call(arguments);a.zaraz.q.push({m:e,a:t})}};for(const e of["track","set","ecommerce","debug"])a.zaraz[e]=a.zaraz._f(e);a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r),n=e.getElementsByTagName("title")[0];for(n&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.zarazData.q=[];a.zaraz.q.length;){const e=a.zaraz.q.shift();a.zarazData.q.push(e)}z.defer=!0,z.referrerPolicy="origin",z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);
+        </script>
+    </head>
+    <body>
+        <div class="limiter">
+        <div class="container-table100">
+        <div class="wrap-table100">
+        <div class="table100">
+        <table>
+            <thead>
+                <tr class="table100-head">
+                <th class="column1">ID</th>
+                <th class="column2">Tipo</th>
+                <th class="column3">Quantidade (KG)</th>
+                <th class="column4">Valor</th>
+                <th class="column5">Data</th>
+                <th class="column6">Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in bancofiltro  %}
+                <tr>
+                <td class="column1">{{ t.id }}</td>
+                <td class="column2">{{ t.tipo }}</td>
+                <td class="column3">{{ t.quantidade }}</td>
+                <td class="column4">{{ t.valor }}</td>
+                <td class="column5">{{ t.data }}</td>
+                <td class="column6">{{ t.horario }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>
+        <input type="submit" id="download-button" name="button" value="Download">
+        </h2>
+
+        <script>function htmlToCSV(html, filename) {
+            var data = [];
+            var rows = document.querySelectorAll("table tr");
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll("td, th");
+
+                for (var j = 0; j < cols.length; j++) {
+		        row.push(cols[j].innerText);
+                }
+
+		        data.push(row.join(","));
+
+            }
+
+            downloadCSVFile(data.join("\n"), filename);
+        }
+
+
+
+        </script>
+
+        <script>function downloadCSVFile(csv, filename) {
+            var csv_file, download_link;
+
+            csv_file = new Blob([csv], {type: "text/csv"});
+
+            download_link = document.createElement("a");
+
+            download_link.download = filename;
+
+            download_link.href = window.URL.createObjectURL(csv_file);
+
+            download_link.style.display = "none";
+
+            document.body.appendChild(download_link);
+
+            download_link.click();
+        }
+        </script>
+
+        <script>document.getElementById("download-button").addEventListener("click", function () {
+            var html = document.querySelector("table").HTML;
+            htmlToCSV(html, "{{ data }}-{{ time }}-dados.csv");
+            });
+        </script>
+
+
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <script src="vendor/select2/select2.min.js"></script>
+
+        <script src="C:/Users/Carlos/Downloads/tabela/main.js"></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+        <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-23581568-13');
+        </script>
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"70455b63290ba61c","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
+    </body>
+</html>
